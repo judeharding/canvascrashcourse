@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>User Draws Rectangle</title>
+	</head>
+	<body>
+		<div class="container">
+			<form id="areaform">
+				<label for="twid">Top Width:</label>
+				<input id="twid" type="number" />
+				<label for="bwid">Bottom Width:</label>
+				<input id="bwid" type="number" />
+
+				<label for="lhgt">Left Height:</label>
+				<input id="lhgt" type="number" />
+				<label for="rhgt">Right Height:</label>
+				<input id="rhgt" type="number" />
+
+				<label for="boxSize">Box Size</label>
+				<select id="boxSize" name="boxSize">
+					<option value="three-two">3x2</option>
+					<option value="four-six">4x6</option>
+					<option value="five-four">5x4</option>
+				</select>
+
+				<button onclick="draw()" type="button">Draw Rectangle</button>
+			</form>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

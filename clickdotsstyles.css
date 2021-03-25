@@ -1,0 +1,12 @@
+* {
+	background-color: aliceblue;
+}
+
+#canvas1 {
+	position: absolute;
+	background: black;
+	width: 99%;
+	height: 99%;
+	top: 2;
+	left: 1;
+}
