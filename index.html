@@ -5,25 +5,32 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>User Draws Rectangle</title>
+		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
-		<div class="container">
+		<div id="sidebarContainer" class="container">
 			<form id="areaform">
-				<label for="twid">Top Width:</label>
-				<input id="twid" type="number" />
+				<label for="wid">Top Width:</label>
+				<input id="wid" type="number" />
 
-				<label for="lhgt">Left Height:</label>
-				<input id="lhgt" type="number" />
+				<label for="hgt">Left Height:</label>
+				<input id="hgt" type="number" />
 
 				<label for="boxSize">Garage Door Size</label>
 				<select id="boxSize" name="boxSize">
-					<option value="three-two">8x7</option>
-					<option value="four-six">9x7</option>
-					<option value="five-four">16X7</option>
+					<!-- <option value="eight-seven">8x7</option>
+					<option value="nine-seven">9x7</option>
+					<option value="sixteen-seven">16X7</option> -->
+					<option value="custom">Custom</option>
+					<option value="board">Board</option>
+					<option value="diag">Diag</option>
 				</select>
 
 				<button onclick="draw()" type="button">Draw Garage</button>
 			</form>
+		</div>
+		<div id="mainContainer" class="container">
+			<canvas id="myCanvas" width="50" height="50"></canvas>
 		</div>
 		<script src="script.js"></script>
 	</body>
