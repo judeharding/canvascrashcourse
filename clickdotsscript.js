@@ -1,3 +1,4 @@
+// https://www.youtube.com/watch?v=Yvz_axxWG4Y 16 min
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d"); // or webgl instead of 2d
 
