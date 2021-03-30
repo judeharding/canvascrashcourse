@@ -1,90 +1,139 @@
-// // https://stackoverflow.com/questions/54790325/dimensions-calculated-w-javascript-to-draw-div-boxes-is-off
-function updateForm(width, height, box) {
-	"use strict";
-	// STARTING POINT ON CANVAS in pixels
-	var x = 175;
-	var y = 175;
+var canvas1 = document.getElementById("myCanvas1");
+var ctx1 = canvas1.getContext("2d");
 
-	// SETTING SCALE
-	var oneFt = 60;
-	var oneIn = oneFt / 12;
+// STARTING POINT ON CANVAS in pixels
+var x = 50;
+var y = 50;
 
-	var canvas = document.createElement("canvas"); //Create a canvas
-	//Set canvas width/height
-	canvas.style.width = "99%";
-	canvas.style.height = "99%";
+// first 2 numbers are the starting x and y ADDING IN PAIRS OF 2
+var polygon1 = [x, y, 100, 50, 50, 100];
+ctx1.beginPath();
+ctx1.moveTo(polygon1[0], polygon1[1]);
 
-	// Set canvas drawing area width/height
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-
-	//Position canvas
-	canvas.style.position = "absolute";
-	canvas.style.left = 0;
-	canvas.style.top = 350;
-	canvas.style.pointerEvents = "none";
-	document.body.appendChild(canvas); //Append canvas to body element
-	var context = canvas.getContext("2d");
-
-	//Draw rectangle x and y = starting point.
-	// context.rect(x, y, height * 50, width * 50);
-	context.rect(x, y, height, width);
-	context.fillStyle = "blue";
-	context.fill();
-	switch (box) {
-		case "eight-seven":
-			canvas.style.zIndex = 3000;
-			context.rect(x, y, 200, 150);
-			context.fillStyle = "blue";
-			context.fill();
-			break;
-		case "nine-seven":
-			canvas.style.zIndex = 2000;
-			context.rect(x, y, 250, 200);
-			context.fillStyle = "red";
-			context.fill();
-			break;
-		case "sixteen-seven":
-			canvas.style.zIndex = 1000;
-			context.rect(x, y, 300, 250);
-			context.fillStyle = "green";
-			context.fill();
-			break;
-		case "custom":
-			canvas.style.zIndex = 500;
-			context.rect(x, y, 60, 1);
-			context.fillStyle = "orange";
-			context.fill();
-			break;
-		case "board":
-			canvas.style.zIndex = 250;
-			context.rect(x + 5, y + 5, 1, 15);
-			context.fillStyle = "purple";
-			context.fill();
-			break;
-
-		case "diag":
-			// canvas.style.zIndex = 125;
-			// context.rect(x, y, 300, 250);
-			// context.fillStyle = "blue";
-			// context.fill();
-			var c = document.getElementById("myCanvas");
-			var ctx = c.getContext("2d");
-			ctx.beginPath();
-			ctx.moveTo(10, 10);
-			ctx.lineTo(100, 100);
-			ctx.strokeStyle = "#FF0000";
-			ctx.stroke();
-			break;
-		default:
-			alert("The value supplied is out of range!");
-			break;
-	}
+// loop through the array and draw the polygon using the lineTo function
+// (i=2 b/c we used it as x & y)
+// +=2 increase i x 2 b/c those are x and y coordinates for the next point
+for (item = 2; item < polygon1.length - 1; item += 2) {
+	// use the lineTo funct to draw
+	ctx1.lineTo(polygon1[item], polygon1[item + 1]);
 }
+ctx1.closePath();
+ctx1.stroke();
+ctx1.fill();
 
-function draw() {
-	var width = document.getElementById("wid").value;
-	var height = document.getElementById("hgt").value;
-	var box = document.getElementById("boxSize").value;
-	updateForm(width, height, box);
+// --------------------
+// STARTING POINT ON CANVAS2 in pixels
+// var a = 50;
+// var b = 50;
+
+var canvas2 = document.getElementById("myCanvas2");
+var ctx2 = canvas2.getContext("2d");
+
+var polygon2 = [50, 50, 100, 50, 110, 75, 130, 90, 100, 120, 90, 140, 80, 120];
+ctx2.beginPath();
+
+// first 2 numbers are the starting x and y
+ctx2.moveTo(polygon2[0], polygon2[1]);
+
+// loop through the array and draw the polygon using the lineTo function
+// (i=2 b/c we used it as x & y)
+// +=2 increase i x 2 b/c those are x and y coordinates for the next point
+for (item = 2; item < polygon2.length - 1; item += 2) {
+	// use the lineTo funct to draw
+	ctx2.lineTo(polygon2[item], polygon2[item + 1]);
 }
+ctx2.closePath();
+ctx2.stroke();
+
+// --------------------
+// STARTING POINT ON CANVAS3 in pixels
+// var a = 50;
+// var b = 50;
+
+var canvas3 = document.getElementById("myCanvas3");
+var ctx3 = canvas3.getContext("2d");
+
+ctx3.beginPath();
+
+// pont at 11 am
+ctx3.beginPath();
+ctx3.moveTo(50, 50);
+ctx3.lineTo(75, 50);
+ctx3.lineTo(50, 75);
+ctx3.closePath();
+ctx3.stroke();
+
+// // point at 5pm
+ctx3.moveTo(250, 250);
+ctx3.lineTo(225, 250);
+ctx3.lineTo(250, 225);
+ctx3.closePath();
+ctx3.stroke();
+
+ctx3.beginPath();
+ctx3.moveTo(75, 50);
+ctx3.lineTo(250, 225);
+ctx3.closePath();
+ctx3.stroke();
+
+ctx3.beginPath();
+ctx3.moveTo(225, 250);
+ctx3.lineTo(50, 75);
+ctx3.closePath();
+ctx3.stroke();
+
+// SQUARE
+// ctx3.moveTo(50, 50);
+// ctx3.lineTo(75, 50);
+// ctx3.lineTo(75, 75);
+// ctx3.lineTo(50, 75);
+
+// LOWER RIGHT ANGLE
+// ctx3.moveTo(50, 50);
+// ctx3.lineTo(75, 50);
+// ctx3.lineTo(50, 75);
+
+// UPPER LEFT ANGLE
+// ctx3.moveTo(50, 50);
+// ctx3.lineTo(25, 50);
+// ctx3.lineTo(50, 25);
+
+// UPPER RIGHT ANGLE
+// ctx3.moveTo(50, 50);
+// ctx3.lineTo(50, 75);
+// ctx3.lineTo(75, 75);
+
+// LOWER LEFT ANGLE
+// ctx3.moveTo(50, 50);
+// ctx3.lineTo(75, 50);
+// ctx3.lineTo(75, 75);
+
+// SQUARE WITH AN X
+// ctx3.moveTo(50, 50);
+// ctx3.lineTo(75, 50);
+// ctx3.lineTo(75, 75);
+// ctx3.lineTo(50, 75);//movetonext
+// ctx3.moveTo(75, 75);
+// ctx3.lineTo(75, 50);
+// ctx3.lineTo(50, 75);
+// ctx3.lineTo(50, 50);
+
+// BOWTIE
+// ctx3.moveTo(75, 75);
+// ctx3.lineTo(75, 50);
+// ctx3.lineTo(50, 75);
+// ctx3.lineTo(50, 50);
+
+// PARALLEL LINES
+// ctx3.moveTo(75, 75);
+// ctx3.lineTo(75, 50);
+// ctx3.moveTo(50, 50);
+// ctx3.lineTo(50, 75);
+// ctx3.lineTo(50, 50);
+
+// CROSS
+// ctx3.moveTo(75, 75);
+// ctx3.lineTo(75, 25);
+// ctx3.moveTo(50, 50);
+// ctx3.lineTo(75, 50);
+// ctx3.lineTo(100, 50);
