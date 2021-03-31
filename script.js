@@ -1,144 +1,87 @@
-var canvas1 = document.getElementById("myCanvas1");
-var ctx1 = canvas1.getContext("2d");
+// https://www.youtube.com/watch?v=5vxygxshTQ4
 
-// STARTING POINT ON CANVAS in pixels
-var x = 50;
-var y = 50;
+console.log("HELLO");
+let canvas, ctx;
 
-// first 2 numbers are the starting x and y ADDING IN PAIRS OF 2
-var polygon1 = [x, y, 100, 50, 50, 100];
-ctx1.beginPath();
-ctx1.moveTo(polygon1[0], polygon1[1]);
+document.addEventListener("DOMContentLoaded", () => {
+	canvas = document.getElementById("canvas");
+	ctx = canvas.getContext("2d");
+	canvas.width = 600;
+	canvas.height = 800;
+	ctx.fillStyle = "cornflowerblue";
+	ctx.strokeStyle = "#ccc"; // gray
+	ctx.lineWidth = 2;
+	ctx.textAlign = "start";
+	ctx.font = "normal 30px Ariel";
+	drawGrid(100); // canvas pixels not CSS pixels
 
-// loop through the array and draw the polygon using the lineTo function
-// (i=2 b/c we used it as x & y)
-// +=2 increase i x 2 b/c those are x and y coordinates for the next point
-for (item = 2; item < polygon1.length - 1; item += 2) {
-	// use the lineTo funct to draw
-	ctx1.lineTo(polygon1[item], polygon1[item + 1]);
-}
-ctx1.closePath();
-ctx1.stroke();
-ctx1.fill();
+	var x = 100; // setting the 0x to 100px
+	var y = 100; // setting the 0y to 100px
 
-// --------------------
-// STARTING POINT ON CANVAS2 in pixels
-// var a = 50;
-// var b = 50;
+	// TRANSLATE METHOD = resetting x and y points
+	ctx.beginPath();
+	ctx.translate(200, 200); // setting the 0x and 0y to 200px from x/y 100
+	ctx.fillText("translate", x, y);
+	ctx.fillText("Translate1", 0, 0);
+	ctx.fill();
+	ctx.closePath();
 
-var canvas2 = document.getElementById("myCanvas2");
-var ctx2 = canvas2.getContext("2d");
+	// ROTATE METHOD
+	ctx.beginPath();
+	ctx.rotate(Math.PI); // 3.14 radians 180 degree rotates AROUND the NEW 0/0 point of 200/200
+	ctx.fillText("rotate", x + 20, y + 20); // the translate 200 200 above still applies
+	// ctx.rotate(Math.PI); // shows NO rotation b/c following fillText line
+	ctx.fill();
+	ctx.closePath();
 
-var polygon2 = [50, 50, 100, 50, 110, 75, 130, 90, 100, 120, 90, 140, 80, 120];
-ctx2.beginPath();
+	// DRAWS GREY GRID
+	function drawGrid(gap) {
+		ctx.beginPath();
+		for (x = gap; x < canvas.width; x = x + gap) {
+			ctx.moveTo(x, 0);
+			ctx.lineTo(x, canvas.height);
+		}
+		for (y = gap; y < canvas.height; y = y + gap) {
+			ctx.moveTo(0, y);
+			ctx.lineTo(canvas.height, y);
+		}
+		ctx.stroke();
+		ctx.closePath();
+	}
+});
 
-// first 2 numbers are the starting x and y
-ctx2.moveTo(polygon2[0], polygon2[1]);
+// ctx.beginPath();
+// ctx.moveTo(100, 100);
+// ctx.rotate((20 * Math.PI) / 180);
+// ctx.fillRect(100, 100, 100, 50);
+// ctx.closePath();
 
-// loop through the array and draw the polygon using the lineTo function
-// (i=2 b/c we used it as x & y)
-// +=2 increase i x 2 b/c those are x and y coordinates for the next point
-for (item = 2; item < polygon2.length - 1; item += 2) {
-	// use the lineTo funct to draw
-	ctx2.lineTo(polygon2[item], polygon2[item + 1]);
-}
-ctx2.closePath();
-ctx2.stroke();
-ctx2.fill();
+// // Point of transform origin
+// ctx.arc(0, 0, 5, 0, 2 * Math.PI);
+// ctx.fillStyle = "blue";
+// ctx.fill();
 
-// --------------------
-// STARTING POINT ON CANVAS3 in pixels
-// var a = 50;
-// var b = 50;
+// // Non-rotated rectangle
+// ctx.fillStyle = "gray";
+// ctx.fillRect(200, 200, 80, 20);
 
-var canvas3 = document.getElementById("myCanvas3");
-var ctx3 = canvas3.getContext("2d");
+// // Rotated rectangle
+// ctx.rotate((45 * Math.PI) / 180);
+// ctx.fillStyle = "red";
+// ctx.fillRect(100, 0, 80, 20);
 
-ctx3.beginPath();
+// // Reset transformation matrix to the identity matrix
+// ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-// pont at 11 am
-ctx3.beginPath();
-ctx3.moveTo(50, 50);
-ctx3.lineTo(75, 50);
-ctx3.lineTo(50, 75);
-ctx3.closePath();
-ctx3.stroke();
-ctx3.fill();
+// // Non-rotated rectangle
+// ctx.fillStyle = "gray";
+// ctx.fillRect(80, 60, 140, 30);
 
-// // point at 5pm
-ctx3.moveTo(250, 250);
-ctx3.lineTo(225, 250);
-ctx3.lineTo(250, 225);
-ctx3.closePath();
-ctx3.stroke();
-ctx3.fill();
+// // Matrix transformation
+// ctx.translate(150, 75);
+// ctx.rotate(Math.PI / 2);
+// ctx.translate(-150, -75);
 
-ctx3.beginPath();
-ctx3.moveTo(75, 50);
-ctx3.lineTo(250, 225);
-ctx3.closePath();
-ctx3.stroke();
-ctx3.fill();
-
-ctx3.beginPath();
-ctx3.moveTo(225, 250);
-ctx3.lineTo(50, 75);
-ctx3.closePath();
-ctx3.stroke();
-ctx3.fill();
-
-// SQUARE
-// ctx3.moveTo(50, 50);
-// ctx3.lineTo(75, 50);
-// ctx3.lineTo(75, 75);
-// ctx3.lineTo(50, 75);
-
-// LOWER RIGHT ANGLE
-// ctx3.moveTo(50, 50);
-// ctx3.lineTo(75, 50);
-// ctx3.lineTo(50, 75);
-
-// UPPER LEFT ANGLE
-// ctx3.moveTo(50, 50);
-// ctx3.lineTo(25, 50);
-// ctx3.lineTo(50, 25);
-
-// UPPER RIGHT ANGLE
-// ctx3.moveTo(50, 50);
-// ctx3.lineTo(50, 75);
-// ctx3.lineTo(75, 75);
-
-// LOWER LEFT ANGLE
-// ctx3.moveTo(50, 50);
-// ctx3.lineTo(75, 50);
-// ctx3.lineTo(75, 75);
-
-// SQUARE WITH AN X
-// ctx3.moveTo(50, 50);
-// ctx3.lineTo(75, 50);
-// ctx3.lineTo(75, 75);
-// ctx3.lineTo(50, 75);//movetonext
-// ctx3.moveTo(75, 75);
-// ctx3.lineTo(75, 50);
-// ctx3.lineTo(50, 75);
-// ctx3.lineTo(50, 50);
-
-// BOWTIE
-// ctx3.moveTo(75, 75);
-// ctx3.lineTo(75, 50);
-// ctx3.lineTo(50, 75);
-// ctx3.lineTo(50, 50);
-
-// PARALLEL LINES
-// ctx3.moveTo(75, 75);
-// ctx3.lineTo(75, 50);
-// ctx3.moveTo(50, 50);
-// ctx3.lineTo(50, 75);
-// ctx3.lineTo(50, 50);
-
-// CROSS
-// ctx3.moveTo(75, 75);
-// ctx3.lineTo(75, 25);
-// ctx3.moveTo(50, 50);
-// ctx3.lineTo(75, 50);
-// ctx3.lineTo(100, 50);
+// // Rotated rectangle
+// ctx.fillStyle = "red";
+// ctx.fillRect(80, 60, 140, 30);
