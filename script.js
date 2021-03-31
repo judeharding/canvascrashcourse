@@ -44,6 +44,7 @@ for (item = 2; item < polygon2.length - 1; item += 2) {
 }
 ctx2.closePath();
 ctx2.stroke();
+ctx2.fill();
 
 // --------------------
 // STARTING POINT ON CANVAS3 in pixels
@@ -62,6 +63,7 @@ ctx3.lineTo(75, 50);
 ctx3.lineTo(50, 75);
 ctx3.closePath();
 ctx3.stroke();
+ctx3.fill();
 
 // // point at 5pm
 ctx3.moveTo(250, 250);
@@ -69,18 +71,21 @@ ctx3.lineTo(225, 250);
 ctx3.lineTo(250, 225);
 ctx3.closePath();
 ctx3.stroke();
+ctx3.fill();
 
 ctx3.beginPath();
 ctx3.moveTo(75, 50);
 ctx3.lineTo(250, 225);
 ctx3.closePath();
 ctx3.stroke();
+ctx3.fill();
 
 ctx3.beginPath();
 ctx3.moveTo(225, 250);
 ctx3.lineTo(50, 75);
 ctx3.closePath();
 ctx3.stroke();
+ctx3.fill();
 
 // SQUARE
 // ctx3.moveTo(50, 50);
