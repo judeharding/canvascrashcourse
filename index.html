@@ -5,18 +5,36 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="styles.css" />
-		<title>Document</title>
+		<style>
+			/* BRINGING IN AN OUTSIDE FONT  */
+			@import url("https://fonts.googleapis.com/css?family=Allerta+Stencil");
+		</style>
+		<title>Canvas Text</title>
 	</head>
 	<body>
-		<h1>Rotate Rectangle</h1>
-		<div>
-			<canvas id="canvas"></canvas>
+		<h1>Canvas Text</h1>
 
-			do NOT state width and height for the canvas IN the HTML OR CSS b/c you
-			will squish or stretch any object you generate in the canvas you establish
-			height and width in the JS file.
-		</div>
+		<canvas id="canvas"></canvas>
 
+		<p><input type="text" id="msg" placeholder="write your message here" /></p>
 		<script src="script.js"></script>
 	</body>
 </html>
+
+<!-- TEMPLATE -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<title>Canvas Text</title>
+	</head>
+	<body>
+		<h1>Canvas Text</h1>
+		<canvas id="canvas"></canvas>
+		<script src="script.js"></script>
+	</body>
+</html>
+ -->
