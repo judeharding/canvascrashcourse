@@ -13,29 +13,28 @@ document.addEventListener("DOMContentLoaded", () => {
 	ctx.textAlign = "start"; // setting x to top, left corner
 	ctx.font = "normal 30px Ariel";
 	drawGrid(100); // canvas pixels not CSS pixels
-	// showZeros();
+	showZeros();
 	// plainRect();
 	// fatGreenLine();
 	// rotateBrownRect();
 	drawEllipse();
+	// getMousePosition();
 
 	var x = 0; // setting the 0x
 	var y = 0; // setting the 0y
 
-	// 	TRY TOMORROW https://www.geeksforgeeks.org/how-to-get-the-coordinates-of-a-mouse-click-on-a-canvas-element/
-	// 	function getMousePosition(canvas, event) {
-	// 		let rect = canvas.getBoundingClientRect();
-	// 		let x = event.clientX - rect.left;
-	// 		let y = event.clientY - rect.top;
-	// 		console.log("Coordinate x: " + x,
-	// 								"Coordinate y: " + y);
+	// // 	TRY TOMORROW https://www.geeksforgeeks.org/how-to-get-the-coordinates-of-a-mouse-click-on-a-canvas-element/
+	// function getMousePosition(canvas, event) {
+	// 	let rect = canvas.getBoundingClientRect();
+	// 	let x = event.clientX - rect.left;
+	// 	let y = event.clientY - rect.top;
+	// 	console.log("Coordinate x: " + x, "Coordinate y: " + y);
 	// }
 
 	// let canvasElem = document.querySelector("canvas");
 
-	// canvasElem.addEventListener("mousedown", function(e)
-	// {
-	// 		getMousePosition(canvasElem, e);
+	// canvasElem.addEventListener("mousedown", function (e) {
+	// 	getMousePosition(canvasElem, e);
 	// });
 
 	// ========================
@@ -103,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// ===============
 	// ROTATE BROWN RECTANGLE
 	function rotateBrownRect() {
+		ctx.beginPath();
 		ctx.rotate(Math.PI / 4); // 3.14 radians 90 degree rotates AROUND the NEW above
 		ctx.fillStyle = "brown";
 		ctx.fillRect(200, 100, 250, 25);
@@ -120,6 +120,20 @@ document.addEventListener("DOMContentLoaded", () => {
 		ctx.strokeStyle = "green";
 		ctx.stroke();
 		ctx.closePath();
+	}
+
+	var lineJoin = ["round", "bevel", "miter"];
+	ctx.lineWidth = 10;
+
+	for (let i = 0; i < lineJoin.length; i++) {
+		ctx.lineJoin = lineJoin[i];
+		ctx.beginPath();
+		ctx.moveTo(5, 5 + i * 40);
+		ctx.lineTo(35, 45 + i * 40);
+		ctx.lineTo(75, 5 + i * 40);
+		ctx.lineTo(115, 45 + i * 40);
+		ctx.lineTo(155, 5 + i * 40);
+		ctx.stroke();
 	}
 
 	// ===================
